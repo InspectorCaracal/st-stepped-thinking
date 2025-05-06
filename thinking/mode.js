@@ -1051,7 +1051,7 @@ export class EmbeddedThoughtsGenerationPlan {
             await this.#revealLeadingMessages(lastMessageIndex);
         }
 
-        for (let i = lastMessageIndex, revealedThoughtsCount = []; i >= 0 && (lastMessageIndex - i < settings.max_hiding_thoughts_lookup); i--) {
+        for (let i = lastMessageIndex, revealedThoughtsCount = []; i >= 0 && (lastMessageIndex - i <= settings.max_hiding_thoughts_lookup); i--) {
             const message = context.chat[i];
 
             revealedThoughtsCount[message.name] ??= this._getThoughtsCountOffset(currentCharacter.name, message.name);
